@@ -638,6 +638,23 @@ my_help/目录中存放开发中常用的帮助文档
 ## 15、YouCompleteMe、AutoComplPop、superTab 和OmniCppcomplete代码自动补全 {{{2
 ###	YouCompleteMe:
 	
+	需要编译、配置.  
+	在vim启动后,YCM会找寻当前路径以及上层路径的.ycm_extra_conf.py.  
+
+	在~目录下放一个默认的模板,再根据不同的项目在当前目录下拷贝.ycm_extra_conf.py.  
+
+#### 功能:
+	补全功能,
+	自动提示错误的功能,
+	类似tags的功能:
+	cation-list 显示警告和错误信息:YcmDiags
+	
+	跳转到定义GoToDefinition
+	跳转到声明GoToDeclaration
+	以及两者的合体GoToDefinitionElseDeclaration
+
+	跳跃功能采用了vim的jumplist,往前跳和往后跳的快捷键为Ctrl+O以及Ctrl+I.
+
 ### AutoComplPop、superTab 和OmniCppcomplete
 	AutoComplPop:  
 	acp.vim插件，在输入的同时实时地查询匹配的关键词 
