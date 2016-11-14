@@ -129,7 +129,7 @@ function build_vim_by_source()
 function config_vim()
 {
 	echo "====== Config your vim now ! ======"
-	rm -rf $HOME/.vim
+	rm -rf $HOME/.vim/README.mk  $HOME/.vim/colors/ $HOME/.vim/macros/ $HOME/.vim/my_help/ $HOME/.vim/shell/
 
 	if [ $online -eq 1 ];then
 		cp ./.vim  $HOME -a
