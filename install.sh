@@ -28,11 +28,12 @@ function get_start_time_and_dir_path()
 	echo "dir_path: $vimcfig_bundle_dir_path"
 }
 
+
+#标识网络连接状态
+online=1
 #shell脚本下载数据时，先检测网络的畅通性
 function check_network()
 {
-	#标识网络连接状态
-	online=1
 
 	#超时时间
 	timeout=5
@@ -87,12 +88,12 @@ function install_packages()
 {
 	echo "====== Install software packages now ! ======"
 	echo -n ">> install: exuberant-ctags+cscope+ranger ... "
-	apt-get install exuberant-ctags cscope ranger --allow-unauthenticated > /dev/null
+	#apt-get install exuberant-ctags cscope ranger --allow-unauthenticated > /dev/null
 	echo "done!"
 
 	# install libc++ man page
 	echo -n ">> libstdc++6-4.7-doc ... "
-	sudo apt install libstdc++6-4.7-doc --allow-unauthenticated > /dev/null
+	#sudo apt install libstdc++6-4.7-doc --allow-unauthenticated > /dev/null
 	echo "done!"
 
 	#echo ">> install: nautilus-open-terminal" #installed by default
@@ -109,8 +110,8 @@ function build_vim_from_source()
 		echo "done!"
 
 		var=$(sudo cat /etc/lsb-release | grep "DISTRIB_RELEASE" --color)
-		#systemVersion='DISTRIB_RELEASE=16.04'
-		systemVersion='DISTRIB_RELEASE=18.04'
+		systemVersion='DISTRIB_RELEASE=16.04'
+		#systemVersion='DISTRIB_RELEASE=18.04'
 		if [ $var == $systemVersion ]; then
 			sudo cat /etc/lsb-release | grep "DISTRIB_RELEASE" --color
 			echo -n ">> install libncurses5-dev libgnome2-dev libgnomeui-dev "\
@@ -175,7 +176,7 @@ function build_vim_from_source()
 			cd -
 		else
 			echo ">> instll vim using apt ... "
-			sudo apt-get install -y vim > /dev/null
+			#sudo apt-get install -y vim > /dev/null
 			echo "done!"
 		fi
 	elif which yum > /dev/null
@@ -200,7 +201,7 @@ function install_vim()
 	fi
 
 	echo -n ">> install: vim-gnome+xsel ... "
-	apt-get install vim-gnome xsel --allow-unauthenticated > /dev/null
+	#apt-get install vim-gnome xsel --allow-unauthenticated > /dev/null
 	echo "done!"
 }
 
@@ -381,7 +382,7 @@ force_build_vim=0
 set_color
 check_root_privileges
 get_start_time_and_dir_path
-check_network
+#check_network
 bakup_vimconfig
 install_packages
 install_vim ${force_build_vim}
@@ -390,5 +391,5 @@ install_vundle_and_plugin
 chown_vundle
 #install_ycm
 #set_cfg_for_winmanager
-git_config
+#git_config
 echo_install_time
